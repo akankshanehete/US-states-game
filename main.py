@@ -16,7 +16,7 @@ state_list = state_data.state.to_list()
 answer_state = screen.textinput(title="Guess the State!", prompt="What's another state?")
 correct_state_count = 0
 
-while correct_state_count <= 50:
+while correct_state_count < 50:
     for state in state_list:
         if answer_state.title() == state.title():
             correct_state_count += 1
