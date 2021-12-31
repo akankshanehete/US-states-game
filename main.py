@@ -14,15 +14,21 @@ state_list = state_data.state.to_list()
 
 
 answer_state = screen.textinput(title="Guess the State!", prompt="What's another state?")
+correct_state_count = 0
 
-for state in state_list:
-    if answer_state.capitalize() == state:
-        new_word = Turtle()
-        new_word.hideturtle()
-        new_word.penup()
-        new_word.goto(int(state_data[state_data.state == state].x), int(state_data[state_data.state == state].y))
-        new_word.write(arg=state, font=("Courier", 10, 'normal'))
+while correct_state_count <= 50:
+    for state in state_list:
+        if answer_state.title() == state.title():
+            correct_state_count += 1
+            new_word = Turtle()
+            new_word.hideturtle()
+            new_word.penup()
+            new_word.goto(int(state_data[state_data.state == state].x), int(state_data[state_data.state == state].y))
+            new_word.write(arg=state, font=("Courier", 10, 'normal'))
+    answer_state = screen.textinput(title=str(correct_state_count) + "/50 states correct",
+                                    prompt="What's another state?")
 
+print("Hooray! You've correctly guessed all 50 states!")
 
 screen.exitonclick()
 
